@@ -1,12 +1,35 @@
-import { useState } from "react"
-import './register.css'
+import { FormEvent, useState } from "react";
+import axios from "axios";
+import './register.css';
 
 function Register() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-    })
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const handleCadastro = async (e: FormEvent) => {
+        e.preventDefault();
+
+        const dadosDoFormulario = {
+            nome: nome,
+            email: email,
+            senha: senha
+        };
+
+        try {
+            const response = await axios.post('http://localhost:3000/smart-estoque/api/v1/users/cadastrar-usuarios', dadosDoFormulario);
+
+            if (response.status === 200) {
+                // Lógica para tratamento de sucesso
+                console.log('Cadastro realizado com sucesso!');
+            } else {
+                // Lógica para tratamento de erro
+                console.error('Erro ao cadastrar. Verifique os dados e tente novamente.');
+            }
+        } catch (error) {
+            console.error('Erro ao enviar requisição:', error);
+        }
+    };
 
     return (
         <div className="container">
@@ -17,14 +40,15 @@ function Register() {
 
                 <form>
                     <div className="input-container">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username">Nome de Usuário</label>
                         <input
                             type="text"
                             className="input-forms"
                             id="email"
                             name="email"
                             placeholder="smartestoque"
-                            required />
+                            required
+                            onChange={(e) => setNome(e.target.value)} />
                     </div>
 
                     <div className="input-container">
@@ -35,7 +59,8 @@ function Register() {
                             id="email"
                             name="email"
                             placeholder="smartestoque@gmail.com"
-                            required />
+                            required
+                            onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
                     <div className="input-container">
@@ -46,10 +71,11 @@ function Register() {
                             id="password"
                             name="password"
                             placeholder="*****************"
-                            required />
+                            required
+                            onChange={(e) => setSenha(e.target.value)} />
                     </div>
 
-                    <button className="buttons">Cadastrar</button>
+                    <button type="submit" className="buttons" onClick={handleCadastro}>Cadastrar</button>
 
                     <footer className="footer">
                         <p className="links"><a className="links" href={"/login"}>Voltar ao login</a></p>
@@ -57,8 +83,7 @@ function Register() {
                 </form>
             </div>
         </div>
-    )
+    );
 }
 
-export default Register
-
+export default Register;
