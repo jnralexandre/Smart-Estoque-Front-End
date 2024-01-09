@@ -9,7 +9,7 @@ function RecoverPassword() {
     })
 
     return (
-        <div className="container">
+        <div className="container-recover-password">
             <div className="card-login">
                 <header className="header">
                     <span>Recuperar senha</span>
@@ -29,7 +29,7 @@ function RecoverPassword() {
 
                     <button className="buttons">Enviar</button>
 
-                    <p className="links"><a className="links" href={"/login"}>Voltar ao login</a></p>
+                    <p className="links"><a className="links" href={"/"}>Voltar ao login</a></p>
 
                     <footer className="footer">
                         <p className="links"><a className="links" href={"/register"}>Criar uma conta</a></p>
