@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import './register.css';
+import "./register.css";
 
 function Register() {
     const navigate = useNavigate();
@@ -21,25 +21,23 @@ function Register() {
         };
 
         try {
-            const response = await axios.post('http://localhost:3000/smart-estoque/api/v1/users/cadastrar-usuarios', dadosDoFormulario);
+            const response = await axios.post("http://localhost:3000/smart-estoque/api/v1/users/cadastrar-usuarios", dadosDoFormulario);
 
             if (response.status >= 200 && response.status < 300) {
-                // Cadastro bem-sucedido
-                setSuccessMessage('Cadastro realizado com sucesso!');
-                setErrorMessage('');
+                setSuccessMessage("Cadastro realizado com sucesso!");
+                setErrorMessage("");
                 setTimeout(() => {
-                    navigate('/');
-                }, 2000); // Redireciona após 2 segundos (ajuste conforme necessário)
+                    navigate("/");
+                }, 2000);
             } else {
-                // Lógica para tratamento de erro
-                console.error('Erro ao cadastrar. Verifique os dados e tente novamente.');
-                setErrorMessage('Erro ao cadastrar. Verifique os dados e tente novamente.');
-                setSuccessMessage('');
+                console.error("Erro ao cadastrar. Verifique os dados e tente novamente.");
+                setErrorMessage("Erro ao cadastrar. Verifique os dados e tente novamente.");
+                setSuccessMessage("");
             }
         } catch (error) {
-            console.error('Erro ao enviar requisição:', error);
-            setErrorMessage('Erro ao cadastrar. Tente novamente mais tarde.');
-            setSuccessMessage('');
+            console.error("Erro ao enviar requisição:", error);
+            setErrorMessage("Erro ao cadastrar. Tente novamente mais tarde.");
+            setSuccessMessage("");
         }
     };
 

@@ -1,12 +1,8 @@
 import { useState } from "react"
-import './recover-password.css'
+import "./recover-password.css"
 
 function RecoverPassword() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-    })
+    const [password, setPassword] = useState("");
 
     return (
         <div className="container-recover-password">

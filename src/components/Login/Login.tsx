@@ -1,13 +1,13 @@
-import { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import './login.css';
+import { useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./login.css";
 
 function Login() {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
@@ -19,24 +19,20 @@ function Login() {
 
         try {
             const response = await axios.post(
-                'http://localhost:3000/smart-estoque/api/v1/users/entrar',
+                "http://localhost:3000/smart-estoque/api/v1/users/entrar",
                 credentials
             );
 
             if (response.status >= 200 && response.status < 300) {
-                // Lógica para tratamento de sucesso
-                console.log('Login bem-sucedido!');
-
-                // Redirecionar para a tela home
-                navigate('/home');
+                console.log("Login bem-sucedido!");
+                navigate("/home");
             } else {
-                // Lógica para tratamento de erro
-                console.error('Erro ao fazer login. Verifique os dados e tente novamente.');
-                setError('Erro ao fazer login. Verifique os dados e tente novamente.');
+                console.error("Erro ao fazer login. Verifique os dados e tente novamente.");
+                setError("Erro ao fazer login. Verifique os dados e tente novamente.");
             }
         } catch (error) {
-            console.error('Erro ao enviar requisição:', error);
-            setError('Erro ao fazer login. Tente novamente mais tarde.');
+            console.error("Erro ao enviar requisição:", error);
+            setError("Erro ao fazer login. Tente novamente mais tarde.");
         }
     };
 
