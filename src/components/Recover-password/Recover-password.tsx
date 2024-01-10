@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./recover-password.css"
 
 function RecoverPassword() {
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
 
     return (
         <div className="container-recover-password">

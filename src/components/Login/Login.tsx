@@ -14,7 +14,7 @@ function Login() {
 
         const credentials = {
             email: email,
-            senha: password,
+            password: password,
         };
 
         try {

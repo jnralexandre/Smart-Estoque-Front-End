@@ -5,9 +5,9 @@ import "./register.css";
 
 function Register() {
     const navigate = useNavigate();
-    const [nome, setNome] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+    const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -15,9 +15,9 @@ function Register() {
         e.preventDefault();
 
         const dadosDoFormulario = {
-            nome: nome,
+            username: username,
             email: email,
-            senha: senha
+            password: password
         };
 
         try {
@@ -58,7 +58,7 @@ function Register() {
                             name="email"
                             placeholder="smartestoque"
                             required
-                            onChange={(e) => setNome(e.target.value)} />
+                            onChange={(e) => setUsername(e.target.value)} />
                     </div>
 
                     <div className="input-container">
@@ -82,7 +82,7 @@ function Register() {
                             name="password"
                             placeholder="*****************"
                             required
-                            onChange={(e) => setSenha(e.target.value)} />
+                            onChange={(e) => setPassword(e.target.value)} />
                     </div>
 
                     <button type="submit" className="buttons" onClick={handleCadastro}>Cadastrar</button>
